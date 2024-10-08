@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ mot.mot_sar }} - Dictionnaire{% endblock %}
+
+{% block content %}
+<h1>{{ mot.mot_sar }}</h1>
+<p><strong>Signification:</strong> {{ mot.sig_mot_sar }}</p>
+<p><strong>Type:</strong> {{ mot.type }}</p>
+<p><strong>Phrase en Sar:</strong> {{ mot.phr_sar }}</p>
+<p><strong>Signification de la phrase:</strong> {{ mot.sig_phr_sar }}</p>
+{% endblock %}

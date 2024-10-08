@@ -1,0 +1,53 @@
+<%- include('layout', { body: `
+<h1 class="h2 mb-4">Gestion des mots</h1>
+
+<h2 class="h4 mb-3">Ajouter un nouveau mot</h2>
+<form action="/admin/add-mot" method="POST">
+  <div class="form-group">
+    <label for="mot_sar">Mot en Sar</label>
+    <input type="text" class="form-control" id="mot_sar" name="mot_sar" required>
+  </div>
+  <div class="form-group">
+    <label for="sig_mot_sar">Signification</label>
+    <input type="text" class="form-control" id="sig_mot_sar" name="sig_mot_sar" required>
+  </div>
+  <div class="form-group">
+    <label for="type">Type</label>
+    <input type="text" class="form-control" id="type" name="type" required>
+  </div>
+  <div class="form-group">
+    <label for="phr_sar">Phrase en Sar</label>
+    <textarea class="form-control" id="phr_sar" name="phr_sar" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="sig_phr_sar">Signification de la phrase</label>
+    <textarea class="form-control" id="sig_phr_sar" name="sig_phr_sar" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Ajouter le mot</button>
+</form>
+
+<h2 class="h4 mt-5 mb-3">Liste des mots</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Mot en Sar</th>
+      <th>Signification</th>
+      <th>Type</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% mots.forEach(mot => { %>
+      <tr>
+        <td><%= mot.mot_sar %></td>
+        <td><%= mot.sig_mot_sar %></td>
+        <td><%= mot.type %></td>
+        <td>
+          <a href="#" class="btn btn-sm btn-info">Modifier</a>
+          <a href="#" class="btn btn-sm btn-danger">Supprimer</a>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+` }) %>

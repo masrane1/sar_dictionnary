@@ -1,0 +1,22 @@
+<%- include('partials/header') %>
+<h1>Bienvenue dans notre dictionnaire</h1>
+<form method="get" action="/" class="mb-4">
+  <div class="input-group">
+    <input type="text" name="q" class="form-control" placeholder="Rechercher un mot..." value="<%= query %>">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
+    </div>
+  </div>
+</form>
+
+<ul class="list-group">
+  <% mots.forEach(mot => { %>
+    <li class="list-group-item">
+      <a href="/mot/<%= mot.id %>"><%= mot.mot_sar %></a> - <%= mot.sig_mot_sar %>
+    </li>
+  <% }) %>
+  <% if (mots.length === 0) { %>
+    <li class="list-group-item">Aucun mot trouvé.</li>
+  <% } %>
+</ul>
+<%- include('partials/footer') %>

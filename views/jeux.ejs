@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+<h1>Jeu de mots</h1>
+
+<p>Quelle est la signification de : <strong><%= mot.sig_mot_sar %></strong> ?</p>
+
+<form method="post" action="/jeux">
+  <% choices.forEach((choice, index) => { %>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="reponse" id="choix<%= index %>" value="<%= choice %>">
+      <label class="form-check-label" for="choix<%= index %>">
+        <%= choice %>
+      </label>
+    </div>
+  <% }) %>
+  <button type="submit" class="btn btn-primary mt-3">Valider</button>
+</form>
+<%- include('partials/footer') %>

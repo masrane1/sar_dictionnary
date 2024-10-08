@@ -1,0 +1,33 @@
+<%- include('layout', { body: `
+<h1 class="h2 mb-4">Gestion des utilisateurs</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nom d'utilisateur</th>
+      <th>Rôle</th>
+      <th>Statut</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.forEach(user => { %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.isAdmin ? 'Administrateur' : 'Utilisateur' %></td>
+        <td><%= user.approved ? 'Approuvé' : 'Non approuvé' %></td>
+        <td>
+          <form action="/admin/toggle-user" method="POST" style="display: inline;">
+            <input type="hidden" name="userId" value="<%= user.id %>">
+            <% if (user.approved) { %>
+              <button type="submit" name="action" value="expel" class="btn btn-danger btn-sm">Expulser</button>
+            <% } else { %>
+              <button type="submit" name="action" value="approve" class="btn btn-success btn-sm">Approuver</button>
+            <% } %>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+` }) %>

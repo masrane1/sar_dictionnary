@@ -1,0 +1,43 @@
+<%- include('layout', { body: `
+<h1 class="h2 mb-4">Tableau de bord administrateur</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Nombre total de mots</h5>
+                <p class="card-text display-4"><%= mots.length %></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Nombre total d'utilisateurs</h5>
+                <p class="card-text display-4"><%= users.length %></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Nombre total d'images</h5>
+                <p class="card-text display-4"><%= images ? images.length : 0 %></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h2 class="h4 mb-3">Actions rapides</h2>
+<div class="row">
+    <div class="col-md-4">
+        <a href="/admin/mots" class="btn btn-primary btn-block mb-3">Gérer les mots</a>
+    </div>
+    <div class="col-md-4">
+        <a href="/admin/galerie" class="btn btn-success btn-block mb-3">Gérer la galerie</a>
+    </div>
+    <div class="col-md-4">
+        <a href="/admin/users" class="btn btn-info btn-block mb-3">Gérer les utilisateurs</a>
+    </div>
+</div>
+` }) %>

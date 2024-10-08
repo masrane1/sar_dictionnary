@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Profil - Dictionnaire{% endblock %}
+
+{% block content %}
+<h1>Profil de {{ user.username }}</h1>
+<p>Score total : {{ profile.score_jeux }}</p>
+
+<h2>Mots consultés :</h2>
+<ul>
+    {% for mot in profile.mots_consultes.all %}
+    <li><a href="{% url 'detail_mot' mot.id %}">{{ mot.mot_sar }}</a></li>
+    {% empty %}
+    <li>Aucun mot consulté pour le moment.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

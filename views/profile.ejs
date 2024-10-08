@@ -1,0 +1,6 @@
+<%- include('partials/header') %>
+<h1>Profil de <%= user.username %></h1>
+<p>ID: <%= user.id %></p>
+<p>Rôle: <%= user.isAdmin ? 'Administrateur' : 'Utilisateur' %></p>
+<!-- Ajoutez ici l'historique des mots consultés et le score des jeux -->
+<%- include('partials/footer') %>

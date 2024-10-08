@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Accueil - Dictionnaire{% endblock %}
+
+{% block content %}
+<h1>Bienvenue dans notre dictionnaire</h1>
+<form method="get" action="{% url 'accueil' %}" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Rechercher un mot...">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">Rechercher</button>
+        </div>
+    </div>
+</form>
+
+<ul class="list-group">
+    {% for mot in mots %}
+    <li class="list-group-item">
+        <a href="{% url 'detail_mot' mot.id %}">{{ mot.mot_sar }}</a> - {{ mot.sig_mot_sar }}
+    </li>
+    {% empty %}
+    <li class="list-group-item">Aucun mot trouvé.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

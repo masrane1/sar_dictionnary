@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Jeux - Dictionnaire{% endblock %}
+
+{% block content %}
+<h1>Jeu de mots</h1>
+
+{% if message %}
+<div class="alert alert-info">{{ message }}</div>
+{% endif %}
+
+<p>Quelle est la signification de : <strong>{{ mot.sig_mot_sar }}</strong> ?</p>
+
+<form method="post">
+    {% csrf_token %}
+    {% for choix in choix %}
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="reponse" id="choix{{ forloop.counter }}" value="{{ choix.mot_sar }}">
+        <label class="form-check-label" for="choix{{ forloop.counter }}">
+            {{ choix.mot_sar }}
+        </label>
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary mt-3">Valider</button>
+</form>
+{% endblock %}

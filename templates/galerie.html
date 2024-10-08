@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Galerie - Dictionnaire{% endblock %}
+
+{% block content %}
+<h1>Galerie d'images</h1>
+
+<div class="row">
+    {% for image in images %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <img src="{{ image.image.url }}" class="card-img-top" alt="{{ image.mot.mot_sar }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ image.mot.mot_sar }}</h5>
+                <p class="card-text">{{ image.mot.sig_mot_sar }}</p>
+                <p class="card-text"><small class="text-muted">{{ image.legende }}</small></p>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>Aucune image dans la galerie pour le moment.</p>
+    {% endfor %}
+</div>
+{% endblock %}

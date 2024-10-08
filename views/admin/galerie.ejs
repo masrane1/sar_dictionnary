@@ -1,0 +1,40 @@
+<%- include('layout', { body: `
+<h1 class="h2 mb-4">Gestion de la galerie</h1>
+
+<h2 class="h4 mb-3">Ajouter une nouvelle image</h2>
+<form action="/admin/add-image" method="POST" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="image">Sélectionner une image</label>
+    <input type="file" class="form-control-file" id="image" name="image" required>
+  </div>
+  <div class="form-group">
+    <label for="legende">Légende</label>
+    <input type="text" class="form-control" id="legende" name="legende" required>
+  </div>
+  <div class="form-group">
+    <label for="mot_sar">Mot en Sar associé</label>
+    <input type="text" class="form-control" id="mot_sar" name="mot_sar" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Ajouter l'image</button>
+</form>
+
+<h2 class="h4 mt-5 mb-3">Images de la galerie</h2>
+<% if (images.length === 0) { %>
+  <p>Aucune image dans la galerie pour le moment.</p>
+<% } else { %>
+  <div class="row">
+    <% images.forEach(image => { %>
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <img src="<%= image.url %>" class="card-img-top" alt="<%= image.legende %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= image.mot_sar %></h5>
+            <p class="card-text"><%= image.legende %></p>
+            <a href="#" class="btn btn-danger btn-sm">Supprimer</a>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+` }) %>
